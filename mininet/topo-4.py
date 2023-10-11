@@ -20,7 +20,8 @@ from mininet.log import info, setLogLevel, warning
 import shlex
 import os
 
-curr_dir = os.path.join(os.getcwd(), "mininet")
+# curr_dir = os.path.join(os.getcwd(), "mininet")
+curr_dir = os.getcwd()
 # curr_dir = '/home/xzc/project/mmsys23lib/cmake-build-debug/'
 """
 we assume  curr_dir/ has following struct
@@ -170,14 +171,14 @@ if __name__ == '__main__':
     # now start two client program. Like server program, we will start two processes
     # start client 1
     client1_node = net.getNodeByName('client1')
-    client1_start_cmd = f'{curr_dir}/bin/MPDtest {curr_dir}/bin/downnode_mn{1}.json'
+    client1_start_cmd = f'{curr_dir}/MPDtest {curr_dir}/config/downnode_mn{1}.json'
     client1_std_f = open(f'client_{1}_stdout', mode='w')  # redirect std out
     client1_start_cmd_args = shlex.split(client1_start_cmd)
     client1_proc = client1_node.popen(client1_start_cmd_args, stdout=client1_std_f)
 
     # start client 2
     client2_node = net.getNodeByName('client2')
-    client2_start_cmd = f'{curr_dir}/bin/MPDtest {curr_dir}/bin/downnode_mn{2}.json'
+    client2_start_cmd = f'{curr_dir}/MPDtest {curr_dir}/config/downnode_mn{2}.json'
     client2_std_f = open(f'client_{2}_stdout', mode='w')  # redirect std out
     client2_start_cmd_args = shlex.split(client2_start_cmd)
     client2_proc = client2_node.popen(client2_start_cmd_args, stdout=client2_std_f)

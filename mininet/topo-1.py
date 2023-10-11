@@ -18,7 +18,8 @@ from mininet.log import info, setLogLevel, warning
 import shlex
 import os
 
-curr_dir = os.path.join(os.getcwd(), "mininet")
+# curr_dir = os.path.join(os.getcwd(), "mininet")
+curr_dir = os.getcwd()
 # curr_dir = '/home/xzc/project/mmsys23lib/cmake-build-debug/'
 """
 we assume  curr_dir/ has following struct

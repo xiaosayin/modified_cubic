@@ -2,6 +2,7 @@ analysis*/
 .vscode/
 .idea/
 cmake-build-debug/
+build/
 
 # Prerequisites
 *.d
@@ -11,6 +12,7 @@ cmake-build-debug/
 *.lo
 *.o
 *.obj
+*.a
 
 # Precompiled Headers
 *.gch

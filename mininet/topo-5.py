@@ -22,7 +22,8 @@ import random
 from threading import Timer
 
 server_num = 3  # data nodes number
-curr_dir = os.path.join(os.getcwd(), "mininet")
+# curr_dir = os.path.join(os.getcwd(), "mininet")
+curr_dir = os.getcwd()
 # curr_dir = '/home/xzc/project/mmsys23lib/cmake-build-debug/'
 """
 we assume  curr_dir/ has following struct
@@ -191,7 +192,7 @@ if __name__ == '__main__':
     # start client
 
     client_node = net.getNodeByName('client')
-    client_start_cmd = f'{curr_dir}/bin/MPDtest {curr_dir}/bin/downnode_mn.json'
+    client_start_cmd = f'{curr_dir}/MPDtest {curr_dir}/config/downnode_mn1.json'
     client_std_f = open(f'client_stdout', mode='w')  # redirect std out
     client_start_cmd_args = shlex.split(client_start_cmd)
     client_proc = client_node.popen(client_start_cmd_args, stdout=client_std_f)

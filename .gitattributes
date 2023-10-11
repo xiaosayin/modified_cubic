@@ -1,0 +1,2 @@
+*.a filter=lfs diff=lfs merge=lfs -text
+mpd/lib/debug/libp2p_lab_module.a filter=lfs diff=lfs merge=lfs -text

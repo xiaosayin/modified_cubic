@@ -19,8 +19,9 @@ import os
 # os.environ['LD_PROFILE'] = 'gmon.out'
 
 
-server_num = 2  # data nodes number
-curr_dir = os.path.join(os.getcwd(), "mininet")
+server_num = 5  # data nodes number
+curr_dir = os.getcwd()
+# curr_dir = os.path.join(os.getcwd(), "mininet")
 """
 we assume  curr_dir/ has following struct
    ./bin/servertest datanode program
