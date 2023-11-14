@@ -21,6 +21,7 @@ from mininet.log import info, setLogLevel, warning
 from threading import Timer  # used to start a tcp flow after some time
 import shlex
 import os
+import pexpect
 
 server_num = 3  # data nodes number
 # curr_dir = os.path.join(os.getcwd(), "mininet")
@@ -148,14 +149,24 @@ if __name__ == '__main__':
 
     # config
     client_left_opts = {"bw": 1000, "delay": "10ms", "max_queue_size": 1000}
-    btlink_opts1 = {"bw": 3.5, "delay": "30ms", "loss1": 1, "loss2": 1, "max_queue_size": 20}
-    btlink_opts2 = {"bw": 1.5, "delay": "30ms", "loss1": 1, "loss2": 1, "max_queue_size": 20}
+    btlink_opts1 = {"bw": 3.5, "delay": "30ms", "loss1": 10, "loss2": 10, "max_queue_size": 20}
+    btlink_opts2 = {"bw": 1.5, "delay": "30ms", "loss1": 10, "loss2": 10, "max_queue_size": 20}
+    # serverlink_opts = [
+    #     {"delay": "5ms"},
+    #     {"delay": "10ms"},
+    #     {"delay": "15ms"},
+    #     {"delay": "20ms"}
+    # ]
+    
     serverlink_opts = [
-        {"delay": "5ms"},
-        {"delay": "10ms"},
-        {"delay": "15ms"},
-        {"delay": "20ms"}
+        {"delay": "5ms", "loss1":1, "loss2":1},
+        {"delay": "10ms", "loss1":8, "loss2":8},
+        {"delay": "15ms", "loss1":3, "loss2":3},
+        {"delay": "20ms", "loss1":16, "loss2":16}
     ]
+    
+    
+    
     server_num = len(serverlink_opts)
 
     topo = DumbbellTopo(server_number=server_num,
@@ -225,7 +236,7 @@ if __name__ == '__main__':
     info('*** Running CLI\n')
     warning('TYPE exit or CTRL + D to exit!! DO NOT kill the CLI interface.There will be zombie process ')
 
-    CLI(net)  # start cmd line interface
+    # CLI(net)  # start cmd line interface
     """
     To start download test, in CMD line interface,type: client {absolute dir}/MPDtest downnode_mn.json
     In my computer, it's like,
@@ -249,4 +260,6 @@ if __name__ == '__main__':
     sleep(1)
     if not t.finished:
         t.cancel()
+    info('*** Stopping CLI Interface\n')
     net.stop()
+    

@@ -4,6 +4,11 @@ analysis*/
 cmake-build-debug/
 build/
 
+# result
+*stdout
+*.csv
+*.txt
+
 # Prerequisites
 *.d
 
